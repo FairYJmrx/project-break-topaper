@@ -1,0 +1,4 @@
+interface:
+  display_name: "文献整理助手"
+  short_description: "阅读论文并整理为结构化综述、比较分析与参考文献笔记。"
+  default_prompt: "使用 $literature-review-assistant 阅读这些论文，按统一字段逐篇抽取信息，补上跨文献综合，并输出带参考文献清单的 Markdown 文档。"
