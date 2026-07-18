@@ -1,9 +1,9 @@
 ---
-name: literature-review-assistant
-description: Assist with reading, extracting, comparing, and synthesizing academic papers into structured literature notes and review drafts. 适合单篇精读、多篇比较、方法演进梳理与综述草稿整理。Only enter literature search flow when the user explicitly asks to find papers in a topic area.
+name: project-break-topaper
+description: Break a research project into structured literature notes, problem trees, solution-literature maps, paper-boundary matrices, publishable paper roadmaps, and staged task plans. 适合完整科研项目拆解、难题树构建、对策-文献图谱、论文边界划分、可发表路线规划、能写几篇论文/能否合成大论文分析，也保留单篇精读、多篇比较、方法演进梳理和综述草稿能力。Only enter literature search flow when the user explicitly asks to find papers in a topic area.
 ---
 
-# 文献整理助手
+# 项目拆解与论文路线助手
 
 把用户提供的论文、文献列表、PDF、链接、现有笔记或总结材料，整理成可以持续追加的结构化文档。默认先做逐篇抽取，再做跨文献综合，避免只停留在摘要级复述。对于方法类论文，要尽量还原从原始数据到最终输出的完整技术链路，而不是只写结论。
 
@@ -13,6 +13,8 @@ description: Assist with reading, extracting, comparing, and synthesizing academ
 - 比较多篇论文并写出统一口径的对照表
 - 将用户提供的已有笔记、总结、讲义或草稿整理成可复用文档
 - 围绕某个主题生成文献综述、研究脉络、方法演进路线或参考文献清单
+- 从一个完整科研项目出发，拆解研究流程、关键难题、候选对策、文献来源、论文边界和可发表路线
+- 判断某个技术方案是适合独立成文、作为补充实验、汇入系统论文，还是迁移成通用方法论文
 - 持续追加已有文档，而不是把信息散落成很多零碎笔记
 
 只有当用户明确要求“帮我找论文”“搜索某个方向的文献”时，才进入检索流程。否则优先处理用户已经给出的论文、文件或链接。
@@ -27,8 +29,11 @@ description: Assist with reading, extracting, comparing, and synthesizing academ
 - 多篇比较
 - 多篇整理成综述草稿
 - 明确要求的文献检索
+- 项目级论文路线拆解
 
 如果核心目标是“阅读、比较、整理已有文献”，不要自行扩展成搜索任务。
+
+如果核心目标是“完整项目怎么拆论文”“这个项目有哪些难题和对策”“哪些模块能成文/能通用化”“形成一个知识图谱和论文路线”，进入 **项目级论文路线拆解流程**。此时先读 `references/project-roadmap-workflow.md`，再按任务需要读取其指向的参考文件。
 
 ### 2. 明确输入材料与输出目标
 
@@ -87,6 +92,34 @@ description: Assist with reading, extracting, comparing, and synthesizing academ
 - 哪些结论依赖更强的数据、标签、模型或评估设定
 - 当前研究空白在哪里
 - 哪些后续工作是真正的方法升级，哪些只是数据更丰富或评估更宽松
+
+## 项目级论文路线拆解
+
+当用户给出的不是一批论文，而是一个正在开发的科研项目或方法体系时，不要直接写综述。先把项目转成可分析对象：
+
+1. **流程树**：从原始输入到最终输出，画出完整技术/科学流程。
+2. **难题树**：逐层标出每个环节的 failure mode，不只列用户已经想到的问题，也要补充遗漏问题。
+3. **对策树**：为每个难题提出候选模块、实验闭环和失败条件。
+4. **文献图谱**：按难题和对策查找/整理来源文献，区分领域文献与跨领域方法文献。
+5. **论文边界矩阵**：判断每个对策能否独立成文，是否只是系统模块，是否能迁移为通用方法论文。
+6. **任务面板**：把后续工作拆成可执行阶段，每阶段给出输入、任务、输出和 go/no-go 标准。
+
+项目级拆解要优先使用中文解释方法名；英文术语只作为括注或候选投稿题名保留。
+
+详细流程见：
+
+- `references/project-roadmap-workflow.md`：完整项目拆解总流程
+- `references/problem-tree.md`：难题树构建规则
+- `references/solution-literature-map.md`：对策和文献图谱规则
+- `references/paper-boundary-matrix.md`：论文边界和成文判断规则
+- `references/task-panel.md`：阶段化任务面板模板
+
+项目级拆解可以提醒调用其他 skill：
+
+- 需要真实检索文献时，调用或遵循 `nature-academic-search`
+- 需要写 introduction / method / experiments / discussion 时，调用或遵循 `nature-writing`
+- 需要审稿人视角评估可发表性时，调用或遵循 `nature-reviewer`
+- 需要管理数据可用性、代码可用性和仓库发布时，调用或遵循 `nature-data`
 
 如果是方法论主题，还要把文献放回时间线上：
 

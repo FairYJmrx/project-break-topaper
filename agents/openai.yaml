@@ -1,4 +1,4 @@
 interface:
-  display_name: "文献整理助手"
-  short_description: "阅读论文、抽取字段、做跨文献综合，并输出结构化 Markdown 笔记。适合单篇精读、多篇比较和方法演进整理。"
-  default_prompt: "使用 $literature-review-assistant 阅读这些论文，按统一字段逐篇抽取信息，再补充跨文献综合、方法演进和参考文献清单，输出可持续追加的 Markdown 文档。"
+  display_name: "项目拆解成文助手"
+  short_description: "拆解项目难题、文献图谱、论文边界和成文路线。"
+  default_prompt: "使用 $project-break-topaper 梳理这个项目的完整流程、难题树、对策文献图谱、论文边界和阶段化任务路线。"
